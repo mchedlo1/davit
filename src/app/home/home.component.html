@@ -1,1 +1,39 @@
-<p>home works!</p>
+
+
+<main>
+    <!-- <div class="" *ngFor="let el of stations">
+          <h5>Station - {{el.name}}</h5>
+          <p>Station number -{{el.stationNumber}}</p>
+          <a routerLink="">Continue</a>
+    </div> -->
+
+    <section class="nav">
+
+        <div class="from">
+            <h2>From</h2>
+            <select [(ngModel)]="from" id="" >
+                <option value=""></option>
+                <option *ngFor="let el of stationsFromTo">{{el}}</option>
+            </select>    
+        </div>
+        <div class="to">
+            <h2>Where to</h2>
+            <select [(ngModel)]="to" id="" >
+                <option value=""></option>
+                <option *ngFor="let el of stationsFromTo">{{el}}</option>
+            </select>    
+        </div>
+        <div class="date">
+            <h2>Date</h2>
+            <input [(ngModel)]="date" type="date" id="">
+        </div>
+        <div class="button">
+            <h2>Filter</h2>
+            <button (click)="filter()" >CLICK ME</button>
+        </div>
+    </section>
+    <section>
+
+    </section>
+
+</main>
