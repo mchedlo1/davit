@@ -4,6 +4,7 @@ import { Stations } from '../Models/stations';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { DepartureTrains } from '../Models/departure';
 
 @Component({
   selector: 'app-home',
@@ -20,25 +21,25 @@ export class HomeComponent {
 
     this.api.getStations().subscribe((arr : any) => {
       this.stations = arr
-      console.log(this.stations)
+      // console.log(this.stations)
     })
 
   }
-
-  stationsFromTo : string[] = [
-    "თბილისი",
-    "ბათუმი",
-    "ფოთი"
-  ]
 
   from = ""
   to = ""
   date = ""
 
+  departureTrains : DepartureTrains[] = []
+
   filter(){
     console.log(this.to)
     console.log(this.from)
     console.log(this.date)
+    this.api.getDeparture(this.from, this.to, this.date).subscribe((deptArr : any) => {
+      this.departureTrains = deptArr
+      console.log(this.departureTrains)
+    })
   }
 
 

@@ -13,14 +13,14 @@
             <h2>From</h2>
             <select [(ngModel)]="from" id="" >
                 <option value=""></option>
-                <option *ngFor="let el of stationsFromTo">{{el}}</option>
+                <option *ngFor="let el of stations">{{el.name}}</option>
             </select>    
         </div>
         <div class="to">
             <h2>Where to</h2>
             <select [(ngModel)]="to" id="" >
                 <option value=""></option>
-                <option *ngFor="let el of stationsFromTo">{{el}}</option>
+                <option *ngFor="let el of stations">{{el.name}}</option>
             </select>    
         </div>
         <div class="date">
@@ -33,6 +33,15 @@
         </div>
     </section>
     <section>
+
+        <div class="trains" *ngFor="let el of departureTrains">
+            <div class="info">
+                
+            </div>
+            <div class="vagons">
+                <h2>{{el.destination}}</h2>
+            </div>
+        </div>
 
     </section>
 
