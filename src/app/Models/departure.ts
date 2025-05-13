@@ -5,7 +5,7 @@ export class DepartureTrains{
     destination?: string
     id!: number
     source?: string
-    trains?: Trains
+    trains?: Trains[]
 }
 
 export class Trains {

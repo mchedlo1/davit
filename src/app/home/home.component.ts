@@ -30,14 +30,13 @@ export class HomeComponent {
   to = ""
   date = ""
 
-  departureTrains : DepartureTrains[] = []
-
+  departureTrains : DepartureTrains = new DepartureTrains
   filter(){
     console.log(this.to)
     console.log(this.from)
     console.log(this.date)
     this.api.getDeparture(this.from, this.to, this.date).subscribe((deptArr : any) => {
-      this.departureTrains = deptArr
+      this.departureTrains = deptArr[0]
       console.log(this.departureTrains)
     })
   }
