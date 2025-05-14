@@ -1,1 +1,11 @@
-<p>vagons works!</p>
+
+
+<main>
+    <div class="name">
+        <h1>{{vagon.name}}</h1>
+        <app-button-bck routerLink="/home" [text]="'Go back'"></app-button-bck>
+    </div>
+    <div class="seats">
+        <app-seat (click)="printSeat(el.number)" *ngFor="let el of vagon.seats" [seat]="el"></app-seat>
+    </div>
+</main>

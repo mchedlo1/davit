@@ -10,7 +10,7 @@ import { VagonsComponent } from './vagons/vagons.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HeaderComponent, FooterComponent, HomeComponent, DetailsComponent, AboutComponent, ErrorComponent, VagonsComponent],
+  imports: [RouterOutlet, HeaderComponent, FooterComponent, HomeComponent, DetailsComponent, AboutComponent, ErrorComponent, VagonsComponent,],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

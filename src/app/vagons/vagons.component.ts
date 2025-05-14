@@ -2,10 +2,12 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { ApiService } from '../Services/api.service';
 import { Vagons } from '../Models/vagon';
-
+import { CommonModule } from '@angular/common';
+import { SeatComponent } from "../seat/seat.component";
+import { ButtonBckComponent } from "../button-bck/button-bck.component";
 @Component({
   selector: 'app-vagons',
-  imports: [RouterModule],
+  imports: [RouterModule, CommonModule, SeatComponent, ButtonBckComponent],
   templateUrl: './vagons.component.html',
   styleUrl: './vagons.component.scss'
 })
@@ -27,6 +29,10 @@ export class VagonsComponent {
       this.vagon = resp[0]
       console.log(this.vagon)
     })
+  }
+
+  printSeat(el ?: string){
+    console.log(el)
   }
 
 }
