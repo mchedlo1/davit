@@ -18,10 +18,7 @@ main{
         flex-direction: column;
         flex-wrap: wrap;
         gap: 20px;
-        button-bck{
-            width: 100px;
-            height: 30px;
-        }
+        
 
     }
     .seats{
@@ -34,9 +31,17 @@ main{
         width: 20px;
         height: 10px;
     }
+   }
+    .chosenSeats{
+        width: 50%;
+        height: 200px;
+        display: flex;
+        gap: 5px;
+        flex-wrap: wrap;
+
+    }
     
-    
-}
+
 
 }
 
