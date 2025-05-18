@@ -22,7 +22,8 @@ export class VagonsComponent {
     //console.log(this.id)
   }
 
-
+  price ? : number
+  totalPrice ?: number
   vagon : Vagons = new Vagons
   chosenSeats : Seats[] = []
   
@@ -31,12 +32,47 @@ export class VagonsComponent {
     this.api.getVagon(this.id).subscribe((resp : any) => {
       this.vagon = resp[0]
       console.log(this.vagon)
-      
+      if(this.vagon.seats){
+        this.price =this.vagon.seats[0].price
+      }
+      else{
+        console.log("error")
+      }
     })
+    
+    
   }
+
+  userSignUp ?: string
 
   ok(){
     console.log(this.chosenSeats)
+    if(localStorage.getItem('USER_SIGNUP')){
+      console.log("ok")
+    }
+    else{
+      console.log("Please sign up first")
+    }
+   // if(localStorage.getItem('USER_SIGNUP') == "true"){
+      //localStorage.setItem('SEATS', JSON.stringify(this.chosenSeats, null, 2));
+      //localStorage.setItem('VAGON', JSON.stringify(this.vagon, null, 2));
+      // this.api.postSeats(this.chosenSeats).subscribe((resp : any) => {
+      //   console.log(resp)
+      // })
+     // console.log("ax")
+   // }
+   // else{
+    //  console.log("Please sign up first")
+   // }
+    if(this.price){
+      this.totalPrice = this.price*this.chosenSeats.length
+      console.log(this.totalPrice)
+       console.log(this.price)
+      }
+    else{
+      console.log("error")
+      console.log(this.price)
+    }
   }
 
 

@@ -1,10 +1,107 @@
 
 
 <main>
-    <article>
-        <h1>ARTICLE</h1>
-    </article>
     <section>
-        <h1>SECTION</h1>
+        <form
+        name="form"
+        #f="ngForm"
+        (ngSubmit)="f.form.valid && onSubmit()"
+        *ngIf="!userSignUp"
+      >
+      <label for="">Full name</label>
+        <input
+        type="text"
+        name="fullName"
+        [(ngModel)]="user.fullName"
+        required
+        #fullName="ngModel"
+        placeholder="-- ----"
+        >
+        @if (f.submitted && fullName.errors ){
+            <div class="invalid-feedback">
+              @if (fullName.errors['required']) {
+              <div>Name is required!</div>
+              }
+            </div>
+            }
+          
+        <label for="">Age</label>
+        <input 
+        type="number"
+        name="age"
+        placeholder="--"
+        required
+        [(ngModel)]="user.age"
+        minlength="1"
+        maxlength="2"
+        #age="ngModel"
+        >
+        @if (f.submitted && age.errors) {
+            <div class="invalid-feedback">
+              @if (age.errors['required']) {
+              <div>age is required!</div>
+              }
+            </div>
+            }
+        <label for="">Email</label>
+        <input 
+        type="email" 
+        name="email"
+        placeholder="-@gmail.com" 
+        required 
+        [(ngModel)]="user.email"
+        minlength="11"
+        #email="ngModel"
+        >
+        @if (f.submitted && email.errors) {
+            <div class="invalid-feedback">
+              @if (email.errors['required']) {
+              <div>Email is required!</div>
+              }
+              @if (email.errors['minlength']) {
+              <div>Email is invalid!</div>
+              }
+            </div>
+            }
+        <label for="">Phone number</label>
+        <input 
+        type="number" 
+        name="phoneNumber"
+        placeholder="123 45 67 89" 
+        required 
+        [(ngModel)]="user.phoneNumber"
+        minlength="9"
+        maxlength="9"
+        #PhoneNumber="ngModel"
+        >
+        @if (f.submitted && PhoneNumber.errors) {
+            <div class="invalid-feedback">
+              @if (PhoneNumber.errors['required']) {
+              <div>Phone Number is required!</div>
+              }
+            </div>
+            }
+        <label for="">City</label>
+        <input 
+        type="text" 
+        name="city"
+        placeholder="----" 
+        required 
+        [(ngModel)]="user.city"
+        #city="ngModel"
+        >
+        @if (f.submitted && city.errors) {
+            <div class="invalid-feedback">
+              @if (city.errors['required']) {
+              <div>city is required!</div>
+              }
+            </div>
+        }
+        <button type="submit">Sign up</button>
+        </form>
+        <article *ngIf="userSignUp">
+            <h2>Welcome {{user.fullName}} :D</h2>
+            <p>you are signed in, view your account details on "Me" page</p>
+        </article>
     </section>
 </main>

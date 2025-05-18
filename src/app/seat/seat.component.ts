@@ -15,8 +15,6 @@ export class SeatComponent {
 
   clickCounter1 = 1
   bck = "background-color:darkseagreen;"
-  price ?: number
-  totalPrice ?: number
   printSeat(el ?: string){
 
     this.clickCounter1++
@@ -25,10 +23,6 @@ export class SeatComponent {
     this.bck = "background-color: white;"
     this.chosenSeatsArr.push(this.seat)
     //console.log(this.chosenSeatsArr)
-    this.price = this.seat.price
-    this.totalPrice = this.price*this.chosenSeatsArr.length
-    //console.log(this.totalPrice)
-    console.log(this.price)
 
     }
     else if(this.clickCounter1 % 2 == 1){
