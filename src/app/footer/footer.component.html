@@ -8,37 +8,35 @@
         (ngSubmit)="f.form.valid && onSubmit()"
         *ngIf="!userSignUp"
       >
-      <label for="">Full name</label>
+      <label for="">Name</label>
         <input
         type="text"
-        name="fullName"
-        [(ngModel)]="user.fullName"
+        name="Name"
+        [(ngModel)]="user.Name"
         required
-        #fullName="ngModel"
+        #Name="ngModel"
         placeholder="-- ----"
         >
-        @if (f.submitted && fullName.errors ){
+        @if (f.submitted && Name.errors ){
             <div class="invalid-feedback">
-              @if (fullName.errors['required']) {
+              @if (Name.errors['required']) {
               <div>Name is required!</div>
               }
             </div>
             }
           
-        <label for="">Age</label>
+        <label for="">lastName</label>
         <input 
-        type="number"
-        name="age"
+        type="text"
+        name="lastName"
         placeholder="--"
         required
-        [(ngModel)]="user.age"
-        minlength="1"
-        maxlength="2"
-        #age="ngModel"
+        [(ngModel)]="user.lastName"
+        #lastName="ngModel"
         >
-        @if (f.submitted && age.errors) {
+        @if (f.submitted && lastName.errors) {
             <div class="invalid-feedback">
-              @if (age.errors['required']) {
+              @if (lastName.errors['required']) {
               <div>age is required!</div>
               }
             </div>
@@ -81,27 +79,31 @@
               }
             </div>
             }
-        <label for="">City</label>
+        <label for="">idNumber</label>
         <input 
-        type="text" 
+        type="number" 
         name="city"
-        placeholder="----" 
+        placeholder="-- -- -- -- --" 
         required 
-        [(ngModel)]="user.city"
-        #city="ngModel"
+        [(ngModel)]="user.idNumber"
+        #idNumber="ngModel"
+        minlength="10"
         >
-        @if (f.submitted && city.errors) {
+        @if (f.submitted && idNumber.errors) {
             <div class="invalid-feedback">
-              @if (city.errors['required']) {
-              <div>city is required!</div>
+              @if (idNumber.errors['required']) {
+              <div>idNumber is required!</div>
+              }
+              @if (idNumber.errors['minlength']) {
+              <div>idNumber is invalid!</div>
               }
             </div>
         }
         <button type="submit">Sign up</button>
         </form>
         <article *ngIf="userSignUp">
-            <h2>Welcome {{user.fullName}} :D</h2>
-            <p>you are signed in, view your account details on "Me" page</p>
+            <h2>Welcome {{user.Name}} {{user.lastName}} :D</h2>
+            <p>you are signed in</p>
         </article>
     </section>
 </main>

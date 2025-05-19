@@ -4,7 +4,7 @@ export class Vagons{
     id!: number
     name?: string
     seats?: Seats[]
-    trainId?: number
+    trainId!: number
     trainNumber?: number
 }
 

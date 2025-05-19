@@ -1,8 +1,8 @@
 
 export class User{
-    fullName ?: string
-    age ?: number
+    Name ?: string
+    lastName ?: string
     email ?: string
     phoneNumber ?: string
-    city ?: string
+    idNumber ?: number
 }

@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Seats } from '../Models/seat';
+import { Post } from '../Models/post';
 
 @Injectable({
   providedIn: 'root'
@@ -18,5 +20,9 @@ export class ApiService {
 
   getVagon(id : number){
     return this.http.get(`https://railway.stepprojects.ge/api/getvagon/${id}`)
+  }
+
+  postSeats(obj : Post){
+
   }
 }

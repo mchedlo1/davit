@@ -8,7 +8,7 @@ export const routes: Routes = [
     {path : '', redirectTo : 'home', pathMatch : 'full'},
     {path : 'home', component : HomeComponent},
     {path : 'about', component : AboutComponent},
-    {path : 'details', component : DetailsComponent},
+    {path : 'services', component : DetailsComponent},
     {path : 'vagons/:id', component : VagonsComponent},
 
 ];

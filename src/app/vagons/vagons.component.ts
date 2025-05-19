@@ -6,6 +6,8 @@ import { CommonModule } from '@angular/common';
 import { SeatComponent } from "../seat/seat.component";
 import { ButtonBckComponent } from "../button-bck/button-bck.component";
 import { Seats } from '../Models/seat';
+import { User } from '../Models/user';
+import { Post } from '../Models/post';
 @Component({
   selector: 'app-vagons',
   imports: [RouterModule, CommonModule, SeatComponent, ButtonBckComponent],
@@ -26,9 +28,11 @@ export class VagonsComponent {
   totalPrice ?: number
   vagon : Vagons = new Vagons
   chosenSeats : Seats[] = []
+  bookedSeats : Seats[] = []
   
 
   ngOnInit(){
+    
     this.api.getVagon(this.id).subscribe((resp : any) => {
       this.vagon = resp[0]
       console.log(this.vagon)
@@ -43,27 +47,32 @@ export class VagonsComponent {
     
   }
 
-  userSignUp ?: string
+  userSignUp ?: boolean
+  user : User | any
+  post : Post = new Post
+
 
   ok(){
-    console.log(this.chosenSeats)
+    //console.log(this.chosenSeats)
+    this.user = (localStorage.getItem('USER'))
+    console.log(this.user)
+    
+    
     if(localStorage.getItem('USER_SIGNUP')){
-      console.log("ok")
+      //console.log("booked")
+      this.bookedSeats = this.chosenSeats
+      //console.log(this.bookedSeats)
+      localStorage.setItem('SEATS', JSON.stringify(this.bookedSeats, null, 2));
+      localStorage.setItem('VAGON', JSON.stringify(this.vagon, null, 2));
+      this.post.trainId = this.vagon.trainId
+      
+      
+      
     }
     else{
-      console.log("Please sign up first")
+      alert("Please sign up first")
+      
     }
-   // if(localStorage.getItem('USER_SIGNUP') == "true"){
-      //localStorage.setItem('SEATS', JSON.stringify(this.chosenSeats, null, 2));
-      //localStorage.setItem('VAGON', JSON.stringify(this.vagon, null, 2));
-      // this.api.postSeats(this.chosenSeats).subscribe((resp : any) => {
-      //   console.log(resp)
-      // })
-     // console.log("ax")
-   // }
-   // else{
-    //  console.log("Please sign up first")
-   // }
     if(this.price){
       this.totalPrice = this.price*this.chosenSeats.length
       console.log(this.totalPrice)
