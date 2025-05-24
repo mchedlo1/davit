@@ -46,7 +46,7 @@
             <div class="vagons" *ngFor="let vag of el.vagons">
                 
                     <h2>{{vag.name}}</h2>
-                    <button routerLink="/vagons/{{vag.id}}">continue</button>
+                    <button routerLink="/vagons/{{vag.id}}/{{this.date}}">continue</button>
                 
             </div>
         </div>

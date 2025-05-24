@@ -21,8 +21,11 @@ export class ApiService {
   getVagon(id : number){
     return this.http.get(`https://railway.stepprojects.ge/api/getvagon/${id}`)
   }
-
   postSeats(obj : Post){
-
+    return this.http.post(`https://railway.stepprojects.ge/api/tickets/register`, obj, {responseType: 'text'})
+  }
+  
+  deleteSeats(id : string){
+    return this.http.delete(`https://railway.stepprojects.ge/api/tickets/cancel/${id}`)
   }
 }

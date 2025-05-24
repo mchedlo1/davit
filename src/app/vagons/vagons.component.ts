@@ -21,9 +21,11 @@ export class VagonsComponent {
 
   constructor(private route : ActivatedRoute, private api : ApiService){
     this.route.params.subscribe(ramp => this.id = ramp['id'])
+    this.route.params.subscribe(ramp => this.date = ramp['date'])
     //console.log(this.id)
   }
 
+  date = ""
   price ? : number
   totalPrice ?: number
   vagon : Vagons = new Vagons
@@ -51,24 +53,85 @@ export class VagonsComponent {
   user : User | any
   post : Post = new Post
 
+  deletes(){
+          this.api.deleteSeats('s').subscribe((resp : any) => {
+            console.log(resp)
+            alert(resp)
+          })
+        }
 
   ok(){
     //console.log(this.chosenSeats)
-    this.user = (localStorage.getItem('USER'))
-    console.log(this.user)
     
     
+    
+    // if(localStorage.getItem('USER_SIGNUP')){
+
+    //   this.user = JSON.parse(localStorage.getItem('USER') || "")
+    //   console.log(this.user)
+
+    //   this.bookedSeats = this.chosenSeats
+    //   //console.log(this.bookedSeats)
+
+    //   localStorage.setItem('SEATS', JSON.stringify(this.bookedSeats, null, 2));
+    //   localStorage.setItem('VAGON', JSON.stringify(this.vagon, null, 2));
+
+    //   this.post.trainId = this.vagon.trainId
+    //   this.post.phoneNumber = this.user.phoneNumber
+    //   this.post.email = this.user.email
+    //   this.post.date = this.date
+    //   this.post.people.push(JSON.parse(localStorage.getItem('selectedSeats') || ""))
+                                                    
+    //   console.log(this.post)
+    //     this.api.postSeats(this.post).subscribe((resp : any) => {
+    //       console.log(resp)   
+         
+    //         alert(resp)
+    //         localStorage.removeItem('selectedSeats')
+    //         //localStorage.removeItem('USER_SIGNUP')
+    //         //localStorage.removeItem('USER')
+    //         localStorage.removeItem('VAGON')
+    //         localStorage.removeItem('SEATS')
+       
+    //     })
+      
+    // }
     if(localStorage.getItem('USER_SIGNUP')){
-      //console.log("booked")
+
+      this.user = JSON.parse(localStorage.getItem('USER') || "")
+      console.log(this.user)
+
       this.bookedSeats = this.chosenSeats
-      //console.log(this.bookedSeats)
-      localStorage.setItem('SEATS', JSON.stringify(this.bookedSeats, null, 2));
-      localStorage.setItem('VAGON', JSON.stringify(this.vagon, null, 2));
+
       this.post.trainId = this.vagon.trainId
+      this.post.phoneNumber = this.user.phoneNumber1.toString()
+      this.post.email = this.user.email
+      this.post.date = this.date
+      this.post.people = this.bookedSeats.map(seat => ({
+        seatId: seat.seatId || "",
+        name: this.user.Name,
+        surame: this.user.lastName,
+        idNumber: this.user.idNumber.toString(),
+        status: "booked",
+        payoutCompleted : true
+      }))  
       
-      
-      
-    }
+
+        console.log(this.post)
+        localStorage.setItem('POST', JSON.stringify(this.post, null, 2));
+        this.api.postSeats(this.post).subscribe((resp : any) => {
+          console.log(resp)
+         
+            alert(resp)
+            localStorage.removeItem('selectedSeats')
+            //localStorage.removeItem('USER_SIGNUP')
+            //localStorage.removeItem('USER')
+            localStorage.removeItem('VAGON')
+            localStorage.removeItem('SEATS')
+       
+        })
+        
+    }   
     else{
       alert("Please sign up first")
       

@@ -32,6 +32,8 @@ export class SeatComponent {
       //console.log(this.chosenSeatsArr)
 
     }
+    localStorage.setItem('selectedSeats', JSON.stringify(this.chosenSeatsArr))
+
   }
 
 }

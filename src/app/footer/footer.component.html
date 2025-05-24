@@ -67,14 +67,14 @@
         name="phoneNumber"
         placeholder="123 45 67 89" 
         required 
-        [(ngModel)]="user.phoneNumber"
+        [(ngModel)]="user.phoneNumber1"
         minlength="9"
         maxlength="9"
-        #PhoneNumber="ngModel"
+        #PhoneNumber1="ngModel"
         >
-        @if (f.submitted && PhoneNumber.errors) {
+        @if (f.submitted && PhoneNumber1.errors) {
             <div class="invalid-feedback">
-              @if (PhoneNumber.errors['required']) {
+              @if (PhoneNumber1.errors['required']) {
               <div>Phone Number is required!</div>
               }
             </div>
